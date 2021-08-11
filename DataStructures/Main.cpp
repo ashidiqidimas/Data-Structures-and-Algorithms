@@ -8,7 +8,7 @@ struct Node {
 };
 
 void printLinkedList(struct Node *node) {
-    if (node == NULL) return;
+    if (node == NULL) return; 
 
     while (node->next != NULL) {
         printf("%d -> ", node->data);
@@ -60,31 +60,27 @@ void insertAfterIndex(struct Node **head, int data, int atIndex) {
         return;
     }
 
-    //  3 -> 4 -> 5
-    //  0    1    2
-
     int currentIndex = 0;
     struct Node *temp = *head;
-    while (atIndex < currentIndex - 1) {
+
+    for (int i = 0; i < atIndex; i++) {
         temp = temp->next;
-        atIndex++;
     }
+
+    newNode->next = temp->next;
+    temp->next = newNode;
 }
-
-// void deleteAtIndex(struct Node *head, )
-
+Í
 int main() {
     struct Node *head = NULL;
 
-    // insertAtHead(&head, 6);
-    // insertAtHead(&head, 4);
-    // insertAtHead(&head, 2);
-
     insertAtTail(&head, 10);
+    insertAtTail(&head, 11);
     insertAtTail(&head, 12);
     insertAtTail(&head, 14);
+    insertAtTail(&head, 15);
 
-    insertAfterIndex(&head, 13, 1);
+    insertAfterIndex(&head, 13, 2);
 
     printLinkedList(head);
 
